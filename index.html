@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Sky Restaurant | Udaipur</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI',sans-serif;
+    }
+
+    :root{
+      --bg:#0d0a09;
+      --surface:#15100e;
+      --surface-soft:#1d1511;
+      --border:rgba(255,255,255,0.08);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.70);
+      --accent:#d94a1e;
+      --accent-soft:#ffb089;
+      --gold:#f1c27d;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top, rgba(217,74,30,0.14), transparent 32%),
+        linear-gradient(180deg, #120d0b 0%, #0b0908 100%);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      padding-top:90px;
+    }
+
+    section{
+      padding:110px 10%;
+    }
+
+    h1,h2,h3,h4{
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+
+    p{
+      color:var(--muted);
+    }
+
+    a{
+      color:inherit;
+    }
+
+    img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:90px;
+      background:#120d0b;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 10%;
+      z-index:5000;
+      transition:0.3s;
+      border-bottom:1px solid transparent;
+    }
+
+    nav.shrink{
+      height:70px;
+      background:#0f0b09;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .brand h3{
+      font-size:24px;
+      letter-spacing:-0.8px;
+    }
+
+    .brand span{
+      font-size:12px;
+      color:var(--accent-soft);
+      letter-spacing:1.2px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      color:white;
+      text-decoration:none;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--gold);
+    }
+
+    .menu-toggle{
+      display:none;
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    /* HERO */
+
+    .portfolio-hero{
+      min-height:calc(100vh - 90px);
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:34px;
+      align-items:center;
+      position:relative;
+      max-width:1280px;
+      margin:0 auto;
+      padding-left:10%;
+      padding-right:10%;
+    }
+
+    .hero-copy .eyebrow{
+      color:var(--accent-soft);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    .hero-copy h1{
+      font-size:clamp(32px, 5vw, 72px);
+      line-height:0.95;
+      text-transform:uppercase;
+      margin-bottom:18px;
+      max-width:620px;
+    }
+
+    .hero-copy .local-name{
+      color:var(--gold);
+      font-size:clamp(22px, 2.5vw, 34px);
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    .hero-copy p{
+      max-width:520px;
+      font-size:16px;
+      margin-bottom:28px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:15px 28px;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:white;
+      box-shadow:0 14px 35px rgba(217,74,30,0.22);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(217,74,30,0.32);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--border);
+      background:transparent;
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:#1a1411;
+      transform:translateY(-3px);
+    }
+
+    .hero-badges{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .hero-badges div{
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      color:rgba(255,255,255,0.78);
+      font-size:13px;
+    }
+
+    .hero-panel{
+      background:
+        linear-gradient(180deg, rgba(17,17,17,0.36) 0%, rgba(9,9,9,0.7) 100%),
+        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80') center/cover;
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:0 25px 70px rgba(0,0,0,0.45);
+      position:relative;
+      overflow:hidden;
+      max-width:680px;
+      margin-left:auto;
+      min-height:540px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .panel-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:rgba(255,255,255,0.78);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .panel-brand{
+      font-size:28px;
+      font-weight:800;
+      color:white;
+    }
+
+    .panel-main{
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      align-items:flex-start;
+      gap:14px;
+      padding-top:120px;
+    }
+
+    .panel-main span{
+      color:rgba(255,255,255,0.6);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:11px;
+    }
+
+    .panel-main h2{
+      font-size:clamp(34px, 4.6vw, 66px);
+      line-height:0.93;
+      text-transform:uppercase;
+      max-width:520px;
+    }
+
+    .panel-main p{
+      max-width:430px;
+      font-size:16px;
+    }
+
+    .panel-tags{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .panel-tags div{
+      padding:8px 14px;
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:999px;
+      font-size:13px;
+      color:rgba(255,255,255,0.85);
+      background:rgba(0,0,0,0.16);
+      backdrop-filter:blur(6px);
+    }
+
+    /* INFO STRIP */
+
+    .info-strip{
+      padding-top:0;
+      margin-top:-20px;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .info-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .info-card h4{
+      color:var(--gold);
+      margin-bottom:8px;
+      font-size:15px;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+    }
+
+    .info-card p,
+    .info-card a{
+      font-size:15px;
+      color:var(--muted);
+      text-decoration:none;
+    }
+
+    /* SHOWCASE */
+
+    .showcase{
+      background:#101010;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:30px;
+      margin-bottom:50px;
+      flex-wrap:wrap;
+    }
+
+    .section-head h2{
+      font-size:clamp(30px, 4vw, 52px);
+      text-transform:uppercase;
+    }
+
+    .section-head p{
+      max-width:520px;
+    }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:24px;
+    }
+
+    .project-card{
+      background:var(--surface);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      overflow:hidden;
+      transition:0.35s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(217,74,30,0.55);
+      box-shadow:0 18px 40px rgba(0,0,0,0.34);
+    }
+
+    .project-visual{
+      aspect-ratio:4/3;
+      overflow:hidden;
+      position:relative;
+      background:#0a0a0a;
+    }
+
+    .project-visual img{
+      transition:0.5s;
+    }
+
+    .project-card:hover .project-visual img{
+      transform:scale(1.05);
+    }
+
+    .project-body{
+      padding:24px;
+    }
+
+    .project-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.8px;
+      color:rgba(255,255,255,0.48);
+      margin-bottom:12px;
+    }
+
+    .project-body h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .project-body p{
+      margin-bottom:18px;
+    }
+
+    .project-link{
+      color:var(--accent-soft);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* MENU HIGHLIGHTS */
+
+    .menu-highlights{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .menu-item{
+      background:var(--surface-soft);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .menu-item h3{
+      font-size:20px;
+      margin-bottom:8px;
+    }
+
+    .menu-item p{
+      margin-bottom:12px;
+      font-size:14px;
+    }
+
+    .menu-item span{
+      color:var(--gold);
+      font-weight:700;
+      font-size:15px;
+    }
+
+    /* PROCESS */
+
+    .process-wrap{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .process-intro{
+      background:linear-gradient(180deg, #121212 0%, #0d0d0d 100%);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:28px;
+      padding:34px;
+      min-height:100%;
+    }
+
+    .process-intro span{
+      display:block;
+      color:var(--accent-soft);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:12px;
+      margin-bottom:16px;
+    }
+
+    .process-intro h2{
+      font-size:clamp(30px, 4vw, 56px);
+      line-height:0.95;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .process-list{
+      display:grid;
+      gap:18px;
+    }
+
+    .process-card{
+      background:var(--surface-soft);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      padding:26px;
+      display:grid;
+      grid-template-columns:70px 1fr;
+      gap:20px;
+      align-items:start;
+    }
+
+    .process-number{
+      font-size:30px;
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    .process-card h3{
+      margin-bottom:8px;
+      font-size:22px;
+    }
+
+    /* REVIEWS */
+
+    .review-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+    }
+
+    .review-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:24px;
+    }
+
+    .review-card .stars{
+      color:var(--gold);
+      letter-spacing:2px;
+      margin-bottom:12px;
+    }
+
+    .review-card h4{
+      margin-bottom:8px;
+    }
+
+    .review-card small{
+      display:block;
+      color:rgba(255,255,255,0.46);
+      margin-bottom:12px;
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+    }
+
+    /* CTA FOOTER */
+
+    footer{
+      background:#0b0b0b;
+      padding:100px 10%;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    .cta-box{
+      background:#141414;
+      border:1px solid #222;
+      border-radius:25px;
+      padding:70px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+      margin-bottom:80px;
+    }
+
+    .cta-left h2{
+      font-size:34px;
+      margin-bottom:15px;
+    }
+
+    .cta-left p{
+      max-width:560px;
+      opacity:0.7;
+      font-size:16px;
+    }
+
+    .cta-button{
+      background:var(--accent);
+      color:white;
+      padding:18px 35px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    .cta-button:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 35px rgba(217,74,30,0.35);
+    }
+
+    .footer-bottom{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:60px;
+      margin-bottom:50px;
+    }
+
+    .footer-brand h3{
+      margin-bottom:10px;
+    }
+
+    .footer-brand p{
+      opacity:0.6;
+      max-width:290px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:80px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links h4{
+      margin-bottom:15px;
+    }
+
+    .footer-links p,
+    .footer-links a{
+      display:block;
+      margin-bottom:8px;
+      opacity:0.6;
+      text-decoration:none;
+      color:white;
+      font-size:14px;
+    }
+
+    .footer-links a:hover{
+      color:var(--accent-soft);
+      opacity:1;
+    }
+
+    .footer-credit{
+      text-align:center;
+      opacity:0.4;
+      font-size:14px;
+      border-top:1px solid #222;
+      padding-top:30px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1100px){
+      .portfolio-hero,
+      .process-wrap,
+      .info-grid,
+      .menu-highlights,
+      .review-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .portfolio-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .process-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:900px){
+      body{
+        padding-top:80px;
+      }
+
+      section,
+      footer,
+      .portfolio-hero{
+        padding-left:6%;
+        padding-right:6%;
+      }
+
+      nav{
+        padding:0 6%;
+        height:80px;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:6%;
+        background:#141414;
+        flex-direction:column;
+        width:220px;
+        padding:20px;
+        display:none;
+        border:1px solid rgba(255,255,255,0.05);
+        border-radius:16px;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .menu-toggle{
+        display:block;
+      }
+
+      .portfolio-hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero-copy h1{
+        font-size:44px;
+      }
+
+      .portfolio-grid,
+      .menu-highlights,
+      .review-grid,
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cta-box{
+        padding:40px;
+        text-align:center;
+      }
+
+      .cta-left h2{
+        font-size:26px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+      }
+
+      .footer-links{
+        gap:40px;
+      }
+    }
+
+    @media(max-width:600px){
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary,
+      .cta-button{
+        width:100%;
+        text-align:center;
+      }
+
+      .process-card{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="brand">
+      <h3>Red Sky Restaurant</h3>
+      <span>रेड स्काई रेस्टोरेंट</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="menu-toggle">☰</div>
+  </nav>
+
+  <section class="portfolio-hero" id="home">
+    <div class="hero-copy">
+      <div class="eyebrow">4.7 Rating • 117 Reviews</div>
+      <h1>Rooftop Dining With One Of Udaipur’s Best Night Views.</h1>
+      <div class="local-name">रेड स्काई रेस्टोरेंट</div>
+      <p>
+        Red Sky Restaurant is a North Indian dining spot in Udaipur known for its rooftop ambience,
+        friendly service, satisfying meals, and memorable views, especially in the evening.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Reserve a Table</a>
+        <a href="tel:+919314450111" class="btn-secondary">Call Now</a>
+      </div>
+
+      <div class="hero-badges">
+        <div>Dine-in</div>
+        <div>Drive-through</div>
+        <div>Delivery</div>
+        <div>Open Till 11 PM</div>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="panel-top">
+        <div class="panel-brand">RS</div>
+        <div>Udaipur • Rajasthan</div>
+      </div>
+
+      <div class="panel-main">
+        <span>North Indian Restaurant</span>
+        <h2>Good Food. Rooftop View. Relaxed Evenings.</h2>
+        <p>
+          Perfect for family dinners, group outings, and sunset-to-night meals with a city-view atmosphere.
+        </p>
+
+        <div class="panel-tags">
+          <div>Rooftop View</div>
+          <div>Family Dining</div>
+          <div>North Indian</div>
+          <div>Reserve Table</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-strip">
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>Location</h4>
+        <p>8, Nani Gali, opposite Sai Baba Temple, Jagdish Chowk, Silawatwari, Udaipur, Rajasthan 313004</p>
+      </div>
+      <div class="info-card">
+        <h4>Hours</h4>
+        <p>Open now<br>Closes 11:00 PM</p>
+      </div>
+      <div class="info-card">
+        <h4>Phone</h4>
+        <a href="tel:+919314450111">093144 50111</a>
+      </div>
+      <div class="info-card">
+        <h4>Highlights</h4>
+        <p>Rooftop seating, dinner views, group-friendly service, family atmosphere</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase" id="about">
+    <div class="section-head">
+      <div>
+        <h2>Why People Like It</h2>
+      </div>
+      <p>
+        Guests consistently mention the rooftop experience, polite staff, pleasant ambience, and satisfying North Indian dishes served with a view.
+      </p>
+    </div>
+
+    <div class="portfolio-grid">
+      <article class="project-card">
+        <div class="project-visual">
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80" alt="Rooftop dining ambience" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span>Ambience</span>
+            <span>Rooftop View</span>
+          </div>
+          <h3>Open-Air Dining</h3>
+          <p>
+            A relaxed rooftop setup that feels especially beautiful at night and works well for both quiet dinners and family gatherings.
+          </p>
+          <span class="project-link">Popular for evening dining</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-visual">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="North Indian dishes" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span>Food</span>
+            <span>North Indian</span>
+          </div>
+          <h3>Comforting Main Courses</h3>
+          <p>
+            Guests have highlighted dishes like Chana Masala, Jeera Rice, Paneer Butter Masala, and other flavorful comfort foods.
+          </p>
+          <span class="project-link">Good food with generous service</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-visual">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Restaurant service" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span>Service</span>
+            <span>Group Friendly</span>
+          </div>
+          <h3>Warm Hospitality</h3>
+          <p>
+            Reviews describe the staff as polite, patient, and helpful, especially when serving larger groups and dinner-time guests.
+          </p>
+          <span class="project-link">Friendly, attentive team</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-head">
+      <div>
+        <h2>Menu Highlights</h2>
+      </div>
+      <p>
+        A simple preview of the kind of dishes visitors have enjoyed most, from North Indian mains to tea and shakes.
+      </p>
+    </div>
+
+    <div class="menu-highlights">
+      <div class="menu-item">
+        <h3>Paneer Butter Masala</h3>
+        <p>Rich, creamy, and consistently praised in guest reviews.</p>
+        <span>Popular Choice</span>
+      </div>
+      <div class="menu-item">
+        <h3>Chana Masala</h3>
+        <p>A flavorful classic that guests have specifically mentioned enjoying.</p>
+        <span>Guest Favorite</span>
+      </div>
+      <div class="menu-item">
+        <h3>Jeera Rice</h3>
+        <p>A comforting side that pairs well with the restaurant’s signature gravies.</p>
+        <span>Recommended</span>
+      </div>
+      <div class="menu-item">
+        <h3>Tandoori Tea & Milkshakes</h3>
+        <p>Warm and cool beverage options that add to the rooftop dining experience.</p>
+        <span>Popular Drinks</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="process-wrap">
+      <div class="process-intro">
+        <span>What To Expect</span>
+        <h2>Simple Visit. Memorable Evening.</h2>
+        <p>
+          Whether you’re visiting for dinner with family, a casual rooftop meal, or a stop while exploring Udaipur, the experience is easy, welcoming, and view-focused.
+        </p>
+      </div>
+
+      <div class="process-list">
+        <div class="process-card">
+          <div class="process-number">01</div>
+          <div>
+            <h3>Arrive For The View</h3>
+            <p>
+              The rooftop setting is one of the biggest reasons guests choose Red Sky, especially for evening and night-time dining.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-number">02</div>
+          <div>
+            <h3>Order North Indian Favorites</h3>
+            <p>
+              Classic dishes, tea, and satisfying dinner options make it a comfortable spot for both regular meals and visitor dining.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-number">03</div>
+          <div>
+            <h3>Relax With Family Or Friends</h3>
+            <p>
+              Reviews suggest it works especially well for groups, family time, and diners looking for a peaceful meal with ambience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase" id="reviews">
+    <div class="section-head">
+      <div>
+        <h2>Guest Reviews</h2>
+      </div>
+      <p>
+        The restaurant currently holds a `4.7` rating from `117` reviews, with repeated praise for rooftop views, food quality, and staff behavior.
+      </p>
+    </div>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h4>Akash Sharma</h4>
+        <small>Local Guide • 5 months ago</small>
+        <p>
+          “Easily one of the best rooftop restaurants in Udaipur. The view from the top floor is stunning, especially at night. Great ambience, polite staff, and good food.”
+        </p>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h4>Mish Cockcroft</h4>
+        <small>Local Guide • 7 months ago</small>
+        <p>
+          “Our dinner here was outstanding. Probably our best meal in India so far. Super tasty, service was excellent and friendly, and the views were beautiful.”
+        </p>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h4>Dee Hooff</h4>
+        <small>2 months ago</small>
+        <p>
+          “By far my most favourite restaurant in Udaipur. Amazing rooftop views like no other. Really friendly staff and reasonably priced food and drink.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="cta-box">
+      <div class="cta-left">
+        <h2>Planning Dinner In Udaipur?</h2>
+        <p>
+          Visit Red Sky Restaurant for rooftop dining, North Indian favorites, and a calm evening atmosphere near Jagdish Chowk. Reserve your table or call directly for quick assistance.
+        </p>
+      </div>
+
+      <div class="cta-right">
+        <a href="tel:+919314450111" class="cta-button">Call To Reserve</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <h3>Red Sky Restaurant</h3>
+        <p>North Indian rooftop dining in Udaipur with family-friendly service and memorable night views.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Quick Info</h4>
+          <p>4.7 Rating</p>
+          <p>117 Reviews</p>
+          <p>Dine-in • Drive-through • Delivery</p>
+          <p>Open Till 11 PM</p>
+        </div>
+
+        <div>
+          <h4>Location</h4>
+          <p>8, Nani Gali</p>
+          <p>Opposite Sai Baba Temple</p>
+          <p>Jagdish Chowk, Udaipur</p>
+          <p>Rajasthan 313004</p>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <a href="tel:+919314450111">093144 50111</a>
+          <p>HMJM+4G Udaipur, Rajasthan</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-credit">
+      © 2026 Red Sky Restaurant. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener("scroll", function(){
+      const nav = document.querySelector("nav");
+      if(window.scrollY > 50){
+        nav.classList.add("shrink");
+      }else{
+        nav.classList.remove("shrink");
+      }
+    });
+
+    document.querySelector(".menu-toggle").addEventListener("click", function(){
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
