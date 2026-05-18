@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --black: #0A0A0A;
@@ -16,7 +18,6 @@
       --white: #F5F1EA;
       --muted: rgba(245, 241, 234, 0.72);
       --line: rgba(200, 155, 91, 0.24);
-      --glass: rgba(245, 241, 234, 0.065);
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.46);
       --ease: cubic-bezier(0.19, 1, 0.22, 1);
       --serif: "Playfair Display", Georgia, serif;
@@ -283,6 +284,7 @@
       display: grid;
       min-height: 100vh;
       min-height: 100svh;
+      min-height: 100dvh;
       place-items: center;
       overflow: hidden;
       isolation: isolate;
@@ -395,7 +397,12 @@
 
     section {
       position: relative;
-      padding: clamp(82px, 10vw, 138px) 0;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
+      padding: clamp(56px, 7svh, 92px) 0;
     }
 
     .about {
@@ -408,7 +415,7 @@
       display: grid;
       grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
       align-items: center;
-      gap: clamp(38px, 7vw, 86px);
+      gap: clamp(30px, 5vw, 68px);
     }
 
     .image-frame {
@@ -430,7 +437,7 @@
 
     .image-frame img {
       width: 100%;
-      height: 620px;
+      height: clamp(360px, 58svh, 560px);
       object-fit: cover;
       transition: transform 1200ms var(--ease);
     }
@@ -483,7 +490,7 @@
       align-items: end;
       justify-content: space-between;
       gap: 30px;
-      margin-bottom: 46px;
+      margin-bottom: clamp(28px, 4svh, 40px);
     }
 
     .section-head .section-copy {
@@ -499,8 +506,8 @@
 
     .feature-card {
       position: relative;
-      min-height: 330px;
-      padding: 28px;
+      min-height: clamp(250px, 33svh, 310px);
+      padding: clamp(22px, 2.5vw, 28px);
       overflow: hidden;
       border: 1px solid rgba(200, 155, 91, 0.18);
       border-radius: 24px;
@@ -540,7 +547,7 @@
 
     .feature-card h3 {
       position: relative;
-      margin-top: 90px;
+      margin-top: clamp(54px, 9svh, 82px);
       font-family: var(--serif);
       font-size: clamp(1.55rem, 2vw, 2.1rem);
       font-weight: 600;
@@ -572,9 +579,9 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr 1fr;
-      grid-auto-rows: 250px;
+      grid-auto-rows: clamp(170px, 22svh, 230px);
       gap: 16px;
-      margin-top: 44px;
+      margin-top: clamp(28px, 4svh, 38px);
     }
 
     .gallery-item {
@@ -617,8 +624,10 @@
     }
 
     .bar-teaser {
-      min-height: 620px;
-      display: grid;
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
+      display: flex;
       align-items: center;
       overflow: hidden;
       background:
@@ -653,6 +662,8 @@
     }
 
     .cta {
+      display: flex;
+      align-items: center;
       overflow: hidden;
       text-align: center;
       background:
@@ -821,6 +832,8 @@
         right: 0;
         width: min(370px, 84vw);
         height: 100vh;
+        height: 100svh;
+        height: 100dvh;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
@@ -855,6 +868,7 @@
       .about-grid {
         display: flex;
         flex-direction: column-reverse;
+        gap: clamp(28px, 5svh, 44px);
       }
 
       .section-head {
@@ -867,11 +881,12 @@
 
       .experience-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
       }
 
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 230px;
+        grid-auto-rows: clamp(180px, 24svh, 220px);
       }
 
       .gallery-item.wide {
@@ -923,7 +938,10 @@
       }
 
       section {
-        padding: 76px 0;
+        min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
+        padding: clamp(54px, 8svh, 76px) 0;
       }
 
       .image-frame {
@@ -931,7 +949,7 @@
       }
 
       .image-frame img {
-        height: 430px;
+        height: clamp(260px, 38svh, 380px);
       }
 
       .about-stats {
@@ -945,7 +963,7 @@
       }
 
       .feature-card {
-        min-height: 270px;
+        min-height: 220px;
       }
 
       .feature-card h3 {
@@ -953,7 +971,7 @@
       }
 
       .gallery-grid {
-        grid-auto-rows: 245px;
+        grid-auto-rows: clamp(210px, 34svh, 260px);
       }
 
       .gallery-item.large {
@@ -961,7 +979,9 @@
       }
 
       .bar-teaser {
-        min-height: 560px;
+        min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
         background-attachment: scroll;
       }
 
@@ -991,6 +1011,7 @@
     }
   </style>
 </head>
+
 <body>
   <header class="site-header" id="siteHeader">
     <nav class="nav container" aria-label="Primary navigation">
@@ -998,6 +1019,7 @@
         RUNWAY47
         <span>Rooftop Dining</span>
       </a>
+
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -1005,6 +1027,7 @@
         <li><a href="#bar">After Dark</a></li>
         <li><a href="#reservations">Reservations</a></li>
       </ul>
+
       <div class="nav-actions">
         <a class="btn btn-gold nav-reserve" href="#reservations">Reserve</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
@@ -1019,15 +1042,18 @@
   <main>
     <section class="hero" id="hero" aria-label="RUNWAY47 rooftop restaurant">
       <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+
       <div class="hero-content">
         <span class="eyebrow">Where Flavour Takes Flight</span>
         <h1>RUNWAY47</h1>
         <p>Fine dining above the skyline, composed with first-class restraint, warm service, and a cinematic view of the city in motion.</p>
+
         <div class="hero-actions">
           <a class="btn btn-gold" href="#reservations">Reserve a Table</a>
           <a class="btn" href="#experience">Explore Experience</a>
         </div>
       </div>
+
       <div class="scroll-cue" aria-hidden="true">Descend</div>
     </section>
 
@@ -1036,20 +1062,24 @@
         <div class="image-frame reveal">
           <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85" alt="Elegant restaurant dining room with warm hospitality lighting" />
         </div>
+
         <div class="reveal">
           <span class="eyebrow">Above the ordinary</span>
           <h2 class="section-title">A rooftop address for unhurried evenings.</h2>
           <p class="section-copy">RUNWAY47 brings the precision of premium travel to the romance of skyline dining. Every arrival is paced like a boarding ritual: polished, calm, and quietly anticipatory.</p>
           <p class="section-copy">From gold-lit tables to flame-finished plates, the room is designed for long conversations, discreet celebrations, and the rare pleasure of watching the city soften beneath you.</p>
+
           <div class="about-stats" aria-label="RUNWAY47 highlights">
             <div class="stat">
               <strong>47</strong>
               <span>Skyline Level</span>
             </div>
+
             <div class="stat">
-              <strong>270°</strong>
+              <strong>270&deg;</strong>
               <span>City Views</span>
             </div>
+
             <div class="stat">
               <strong>7</strong>
               <span>Tasting Acts</span>
@@ -1066,8 +1096,10 @@
             <span class="eyebrow">The experience</span>
             <h2 class="section-title">First-class hospitality, served at altitude.</h2>
           </div>
+
           <p class="section-copy">A composed rooftop journey shaped by skyline views, refined plates, soft bronze light, and service that moves with quiet confidence.</p>
         </div>
+
         <div class="experience-grid">
           <article class="feature-card reveal">
             <span class="card-number">01</span>
@@ -1075,18 +1107,21 @@
             <p>Terrace tables are oriented toward the horizon, giving every course a cinematic city backdrop.</p>
             <span class="gold-line"></span>
           </article>
+
           <article class="feature-card reveal">
             <span class="card-number">02</span>
             <h3>Signature Cuisine</h3>
             <p>Modern fine dining built on seasonal produce, precise technique, and subtle global influence.</p>
             <span class="gold-line"></span>
           </article>
+
           <article class="feature-card reveal">
             <span class="card-number">03</span>
             <h3>Luxury Atmosphere</h3>
             <p>Matte black finishes, rich gold accents, and lounge-inspired comfort create an intimate altitude.</p>
             <span class="gold-line"></span>
           </article>
+
           <article class="feature-card reveal">
             <span class="card-number">04</span>
             <h3>After Dark</h3>
@@ -1104,19 +1139,24 @@
           <h2 class="section-title">Frames from the evening ascent.</h2>
           <p class="section-copy">A visual language of terrace air, crafted plates, amber glass, and skyline reflections.</p>
         </div>
+
         <div class="gallery-grid">
           <figure class="gallery-item large reveal">
             <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85" alt="Fine dining table with elegant plates and warm light" />
           </figure>
+
           <figure class="gallery-item reveal">
             <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=85" alt="Chef plating a refined fine dining dish" />
           </figure>
+
           <figure class="gallery-item reveal">
             <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1000&q=85" alt="Restaurant dish prepared with premium ingredients" />
           </figure>
+
           <figure class="gallery-item wide reveal">
             <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1400&q=85" alt="Cinematic city skyline at night from above" />
           </figure>
+
           <figure class="gallery-item reveal">
             <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=85" alt="Warm modern luxury restaurant interior" />
           </figure>
@@ -1154,6 +1194,7 @@
           <h2>RUNWAY47</h2>
           <p>Luxury rooftop fine dining inspired by first-class hospitality, skyline travel, and evenings that linger beautifully.</p>
         </div>
+
         <div>
           <h3>Navigate</h3>
           <ul>
@@ -1163,6 +1204,7 @@
             <li><a href="#reservations">Reservations</a></li>
           </ul>
         </div>
+
         <div>
           <h3>Contact</h3>
           <ul>
@@ -1171,6 +1213,7 @@
             <li><a href="mailto:reservations@runway47.com">reservations@runway47.com</a></li>
           </ul>
         </div>
+
         <div>
           <h3>Opening Hours</h3>
           <ul>
@@ -1180,6 +1223,7 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
         <span>&copy; 2026 RUNWAY47. All rights reserved.</span>
         <span>Where Flavour Takes Flight</span>
@@ -1246,6 +1290,7 @@
     });
 
     let ticking = false;
+
     window.addEventListener(
       "scroll",
       () => {
@@ -1255,6 +1300,7 @@
             setHeroParallax();
             ticking = false;
           });
+
           ticking = true;
         }
       },
@@ -1266,3 +1312,4 @@
   </script>
 </body>
 </html>
+```
